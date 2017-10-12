@@ -94,15 +94,8 @@ p, h3, .page-header{
 
 #name {
     position: relative;
-    top: 30px;
+    top: 20px;
     width: 100%;
-}
-
-#admin {
-    position: relative;
-    width: 100%;
-    text-align: center;
-    top: 40px;
 }
 
 #adminPic {
@@ -115,15 +108,15 @@ p, h3, .page-header{
 
 #address {
     position: relative;
-    top: 60px;
+    top: 30px;
 }
 
 #contact {
     position: relative;
-    top: 70px;
+    top: 30px;
 }
 
 #timezone {
     position: relative;
-    top: 70px;
+    top: 30px;
 }

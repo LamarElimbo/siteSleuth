@@ -5,7 +5,7 @@ import soupTheLink
 
 def scrapeAlexa(pSlicedURL):
     alexaURL = 'https://www.alexa.com/siteinfo/' + pSlicedURL
-    
+    print('alexa url: ', alexaURL)
     soupedAlexa = soupTheLink.soupTheLink(alexaURL)
     score = soupedAlexa.find(class_='metrics-data align-vmiddle').get_text()
     score = score.strip()

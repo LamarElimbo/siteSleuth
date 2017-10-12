@@ -59,6 +59,9 @@ def scrapeGivenURL(pURL):
         for social in commonSocialMedia:
             try:
                 if social in link:
+                    link = sliceURL.sliceURL(link)
+                    link = link.lstrip('/')
+                    link = 'http://' + link
                     socials.append((link, social))
                 else:
                     continue

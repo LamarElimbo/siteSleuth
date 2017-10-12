@@ -58,12 +58,18 @@ def scrapeWhoIs(pURL):
             name = header.parent.next_sibling
             name = name.get_text()
             
+            nameParts = name.split()
+            fullName = ''
+
+            for namePart in nameParts:
+                fullName += namePart[0] + namePart[1:].lower() + " "
+            
             if nameNum == 1:
-                registrantName = name
+                registrantName = fullName
             elif nameNum == 2:
-                adminName = name
+                adminName = fullName
             elif nameNum == 3:
-                technicalName = name
+                technicalName = fullName
         elif header.get_text() == "Organization":
             organizationNum += 1
             organization = header.parent.next_sibling

@@ -22,6 +22,6 @@ def scrapeAlexa(pSlicedURL):
                 keywords.append(keyword[10:])
     print('keywords: ', keywords)
     if len(keywords) == 0:
-        keywords = 'No kewords found.'
+        keywords.append('No kewords found.')
     
     return score, keywords

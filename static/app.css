@@ -55,19 +55,78 @@ p, h3, .page-header{
     border-top: 3px dotted gray;
 }
 
-#profile_container {
+.profile_container {
     width:100%;
+    position: relative;
 }
 
 #logo {
     position: relative;
-    width:80px;
-    height:80px;
+    top: 20px;
+    width:120px;
+    height:120px;
     background-color: mediumpurple;
 }
 
 #title {
     position: absolute;
-    right: 5px;
+    text-align: right;
+    right: 30px;
     top: 0px;
+}
+
+#description {
+    position: relative;
+    top: 20px;
+}
+
+#socials {
+    position: relative;
+    top: 20px;
+}
+
+.socials {
+    width: 30px;
+}
+
+#keywords {
+    position: relative;
+    top: 20px;
+}
+
+#name {
+    position: relative;
+    top: 30px;
+    width: 100%;
+}
+
+#admin {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    top: 40px;
+}
+
+#adminPic {
+    position: absolute;
+    right: 0px;
+    top: 90px;
+    width:120px;
+    height:120px;
+    background-color: mediumpurple;
+}
+
+#address {
+    position: relative;
+    top: 60px;
+}
+
+#contact {
+    position: relative;
+    top: 70px;
+}
+
+#timezone {
+    position: relative;
+    top: 70px;
 }

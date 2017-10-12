@@ -69,71 +69,68 @@
             </div>
                 
             <div class="col-xs-11 col-md-5 maintext" style='position:absolute; right:7%;'>                
-                <div id="profile_container">
+                <div class="profile_container">
                     
-                    <div id='logo'></div>
                     <div class="infoBox" id='title'>
-                        <h2>{{title}}</h2>
+                        <h1>{{title}}</h1>
+                        <p><a href={{site}}>{{site}}</a></p>
+                        <p>Alexa Score | {{alexa_score}}</p>
+                        <p>
+                            {% if socials == [] %}
+                                {% for social in socials %}
+                                <a href={{ social[0] }}><img class='socials' src=/static/logos/{{ social[1] }}.png></a>
+                                {% endfor %}
+                            {% else %}
+                            <br>
+                            {% endif %}
+                        </p>
                     </div>
-                    <div class="infoBox">
-                        <h3>Website</h3>
-                        <a href={{site}}>{{site}}</a></p>
-                    </div>
-                    <div class="infoBox">
-                        <h3>Description</h3>
+                    <div id='logo'></div>
+                    <div class="infoBox" id="description">
+                        <h3>Site Description</h3>
                         <p>{{description}}</p>
                     </div>
-                    <div class="infoBox">
-                        <h3>Socials</h3>
-                        <ul>
-                            {% for social in socials %}
-                            <li><a href={{ social }}>{{ social }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="infoBox">
-                        <h3>Admin's Name</h3>
-                        <p>{{name}}</p>
-                    </div>
-                    <div class="infoBox">
-                        <h3>Address</h3>
-                        <p>{{address}}</p>
-                    </div>
-                    <div class="infoBox">
-                        <h3>City</h3>
-                        <p>{{city}}</p>
-                    </div>
-                    <div class="infoBox">
-                        <h3>State/Province</h3>
-                        <p>{{state}}</p>
-                    </div>
-                    <div class="infoBox">
-                        <h3>Country</h3>
-                        <p>{{country}}</p>
-                    </div>
-                    <div class="infoBox">
-                        <h3>Phone and Email</h3>
-                        <p>{{phone}}</p>
-                    </div>
-                    <div class="infoBox">
-                        <img height=18 src={{email}}>
-                    </div>
-                    <div class="infoBox">
-                        <h3>Alexa Score</h3>
-                        <p>{{alexa_score}}</p>
-                    </div>
-                    <div class="infoBox">
+                    <div class="infoBox" id='keywords'>
                         <h3>Keywords</h3>
-                        <p>{{keywords}}</p>
+                        <p>
+                            {% for keyword in keywords %}
+                                {% if keyword == 'No kewords found.' %}
+                                    {{keyword}}
+                                {% else %}
+                                    #{{keyword}}  
+                                {% endif %}
+                            {% endfor %}
+                        </p>
                     </div>
-                    <div class="infoBox">
-                        <h3>Timezone ID</h3>
-                        <p>{{timezone_id}}</p>
+                </div>
+                
+                <div class="profile_container">
+                    <div id="divider"></div>
+                    <p id="admin">Admin Info</p>
+                    <div class="infoBox" id="name">
+                        <h1>{{name}}</h1>
                     </div>
-                    <div class="infoBox">
-                        <h3>Timezone Name</h3>
-                        <p>{{timezone_name}}</p>
+                    <div id="adminPic"></div>
+                    <div id="address">
+                        <div class="infoBox">
+                            <h3>Address</h3>
+                            <p>{{address}}</p>
+                        </div>
+                        <div class="infoBox">
+                            <p>{{city}} | {{state}} | {{country}}</p>
+                        </div>
                     </div>
+                    <div class="infoBox" id="timezone">
+                        <h3>Timezone</h3>
+                        <p>{{timezone_id}} | {{timezone_name}}</p>
+                    </div>
+                    <div class="infoBox" id="contact">
+                        <h3>Contact</h3>
+                        <p>{{phone}} | <img height=18 src={{email}}></p>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>

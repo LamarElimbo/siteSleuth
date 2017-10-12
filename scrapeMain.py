@@ -26,7 +26,7 @@ def scrapeMain(pURL):
             siteTitle = splitSiteTitle[0]
         print('title: ', siteTitle)
     except AttributeError:
-        siteTitle = 'No title found.'
+        siteTitle = sliceURL.sliceURL(pURL).replace('.com', '').replace('/', '')
         
     # Collect site description
     if len(splitSiteTitle) == 2:
@@ -47,22 +47,22 @@ def scrapeMain(pURL):
     commonSocialMedia = ['facebook', 'instagram', 'youtube', 'twitter', 'pinterest', 'linkedin', 'google', 'yelp', 'tumblr', 'github']
 
     listedURLs = [link.get('href') for link in souped.find_all('a')]
-    socialsOnSite=[]
+    socials=[]
 
     for link in listedURLs:
 
         for social in commonSocialMedia:
             try:
                 if social in link:
-                    socialsOnSite.append(link)
+                    socials.append((link, social))
                 else:
                     continue
             except TypeError:
                 continue
 
-    print('social media: ', socialsOnSite)
+    print('social media: ', socials)
     
-    if len(socialsOnSite) == 0:
-        socialsOnSite.append('No socials found.')
+    if len(socials) == 0:
+        socials.append(('No socials found.', 'None'))
     
-    return siteTitle, siteDescription, socialsOnSite
+    return siteTitle, siteDescription, socials

@@ -4,7 +4,7 @@
 import soupTheLink
 import sliceURL
 
-def scrapeMain(pURL):
+def scrapeGivenURL(pURL):
     souped = soupTheLink.soupTheLink(pURL)
     
     # Collect site title
@@ -12,6 +12,8 @@ def scrapeMain(pURL):
     try:
         siteTitle = souped.title.get_text()
         siteTitle = str(siteTitle)
+        siteTitle = siteTitle.replace('\n', '')
+        
         if len(siteTitle) == 0:
             siteTitle = sliceURL.sliceURL(pURL).replace('.com', '').replace('/', '')
         else:
@@ -22,6 +24,8 @@ def scrapeMain(pURL):
                     splitSiteTitle = siteTitle.split(':')
                     if len(splitSiteTitle) == 1:
                         splitSiteTitle = siteTitle.split('-')
+                        if len(splitSiteTitle) == 1:
+                            splitSiteTitle = siteTitle.split('—')
                         
             siteTitle = splitSiteTitle[0]
         print('title: ', siteTitle)
@@ -29,6 +33,7 @@ def scrapeMain(pURL):
         siteTitle = sliceURL.sliceURL(pURL).replace('.com', '').replace('/', '')
         
     # Collect site description
+    siteDescription=''
     if len(splitSiteTitle) == 2:
         siteDescription = splitSiteTitle[1]
     else:
@@ -64,5 +69,29 @@ def scrapeMain(pURL):
     
     if len(socials) == 0:
         socials.append(('No socials found.', 'None'))
+        
+    # Collect icon
+    listedURLs = [link.get('href') for link in souped.find_all('link')]
+    icons=[]
     
-    return siteTitle, siteDescription, socials
+    if len(icons) == 0:
+        for socialLink in socials:
+            if 'twitter' == socialLink[1]:
+                soupedTwitter = soupTheLink.soupTheLink(socialLink[0])
+                twitterIcon = soupedTwitter.find(class_='ProfileAvatar-image ')['src']
+                icons.append(twitterIcon)
+    
+    if len(icons) == 0:
+        for link in listedURLs:
+            if 'favicon' in link:
+                icons.append(link)
+            elif '.ico' in link:
+                icons.append(link)
+                
+    try:
+        icon = icons[0]
+    except IndexError:
+        icon = 'None'
+    
+    print('icon: ', icon)
+    return siteTitle, siteDescription, socials, icon

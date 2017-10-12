@@ -1,7 +1,7 @@
 # Main function to call and collect all useful information in dictionary
 
 import sliceURL
-import scrapeMain
+import scrapeGivenURL
 import scrapeWhoIs
 import scrapeAlexa
 import getTimezone
@@ -9,7 +9,7 @@ import getTimezone
 def runSearch(pURL):
     
     slicedURL = sliceURL.sliceURL(pURL)
-    siteTitle, siteDescription, socials = scrapeMain.scrapeMain(pURL)
+    siteTitle, siteDescription, socials, icon = scrapeGivenURL.scrapeGivenURL(pURL)
     adminName, adminAddress, adminCity, adminStateOrProvince, adminCountry, adminPhone, adminEmail = scrapeWhoIs.scrapeWhoIs(pURL)
     score, keywords = scrapeAlexa.scrapeAlexa(slicedURL)
     
@@ -21,6 +21,6 @@ def runSearch(pURL):
     else:
         timezoneId, timezoneName = getTimezone.getTimezone(adminCity, adminStateOrProvince)
         
-    requiredInfo = {'Title': siteTitle, 'Description': siteDescription, 'Socials': socials, "Admin's Name": adminName, 'Address': adminAddress, 'City': adminCity, 'State': adminStateOrProvince, 'Country': adminCountry, 'Phone': adminPhone, 'Email': adminEmail, 'Alexa Score': score, 'Keywords': keywords, 'Timezone ID': timezoneId, 'Timezone Name': timezoneName}
+    requiredInfo = {'Title': siteTitle, 'Description': siteDescription, 'Socials': socials, 'Icon': icon, "Admin's Name": adminName, 'Address': adminAddress, 'City': adminCity, 'State': adminStateOrProvince, 'Country': adminCountry, 'Phone': adminPhone, 'Email': adminEmail, 'Alexa Score': score, 'Keywords': keywords, 'Timezone ID': timezoneId, 'Timezone Name': timezoneName}
     
     return requiredInfo

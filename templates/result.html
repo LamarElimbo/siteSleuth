@@ -76,7 +76,7 @@
                         <p><a href={{site}}>{{site}}</a></p>
                         <p>Alexa Score | {{alexa_score}}</p>
                         <p>
-                            {% if socials == [] %}
+                            {% if socials != [('No socials found.', 'None')] %}
                                 {% for social in socials %}
                                 <a href={{ social[0] }}><img class='socials' src=/static/logos/{{ social[1] }}.png></a>
                                 {% endfor %}
@@ -85,7 +85,7 @@
                             {% endif %}
                         </p>
                     </div>
-                    <div id='logo'></div>
+                    <div id='logo'><img src={{ icon }}></div>
                     <div class="infoBox" id="description">
                         <h3>Site Description</h3>
                         <p>{{description}}</p>

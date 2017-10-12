@@ -60,12 +60,10 @@ p, h3, .page-header{
     position: relative;
 }
 
-#logo {
+#logo img{
     position: relative;
     top: 20px;
     width:120px;
-    height:120px;
-    background-color: mediumpurple;
 }
 
 #title {
@@ -113,7 +111,6 @@ p, h3, .page-header{
     top: 90px;
     width:120px;
     height:120px;
-    background-color: mediumpurple;
 }
 
 #address {

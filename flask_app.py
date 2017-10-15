@@ -1,10 +1,15 @@
+#loading animation
+#banner
+
 from flask import Flask, request, render_template, make_response
 from string import Template
 from io import StringIO
+import urllib
 import csv
 import mergeInfo
 import htmlSegCreator
 import searchResult
+import urlNormalizer
 
 app = Flask(__name__)
 requiredInfo=[]
@@ -16,14 +21,19 @@ def search():
 
 @app.route('/result.html', methods=['POST'])
 def result():
-    websites = request.form['website']
-    websites = websites.replace(" ", "")
-    websiteList = websites.split(',')
-    global requiredInfo
-    requiredInfo += mergeInfo.runSearch(websiteList)
-    profileSeg = htmlSegCreator.createHTML(requiredInfo)
-    resultTemplate = searchResult.getResult()
-    return resultTemplate.substitute(profileSegment=profileSeg)
+    try:
+        websites = request.form['website']
+        websiteList = urlNormalizer.normalizeURL(websites)
+        global requiredInfo
+        requiredInfo=[]
+        requiredInfo += mergeInfo.runSearch(websiteList)
+        profileSeg = htmlSegCreator.createHTML(requiredInfo)
+        resultTemplate = searchResult.getResult()
+        return resultTemplate.substitute(profileSegment=profileSeg)
+    except urllib.error.HTTPError:
+        return render_template('error.html')
+    except urllib.error.URLError:
+        return render_template('search.html')
 
 @app.route("/downloadCSV")
 def downloadCSV():

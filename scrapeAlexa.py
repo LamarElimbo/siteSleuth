@@ -18,7 +18,7 @@ def scrapeAlexa(pSlicedURL):
         if header.get_text() == 'Keyword':
             keywordTable = header.parent.parent.parent
             for keyword in keywordTable.find_all(class_="topkeywordellipsis"):
-                keyword = keyword.get_text()
+                keyword = keyword.get_text() + "  "
                 keywords.append(keyword[10:])
     print('keywords: ', keywords)
     if len(keywords) == 0:

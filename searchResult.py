@@ -44,18 +44,17 @@ def getResult():
             <!-- /.container-fluid -->
         </nav>
         <div class="container">
-            <h1 class="page-header">Welcome to Site Sleuth</h1>
-            <p class="lead">This proprietary software, developed by world renowned data detective <a href='http://www.lamartalkscode.com'>Lamar Johnson</a>, is the central hub for all of your need-to-know website sleuthing needs!</p>
+            <h1 class="page-header">Found some info!</h1>
 
             <div class="row">
                 <div class="col-xs-11 col-md-5 maintext">
-                    <form action="{{ url_for('result')}}" id='textform' method='post'>
-                        <center><h2>Try another website here...</h2></center>
-                      <input type='text' id='siteInput' form='textform' name='website'>
+                    <h2>Try another website or list of websites separated by a comma here...</h2>
+                    <textarea type='textarea' id='siteInput' form='textform' name='website'></textarea>
+                    <form action="/result.html" id='textform' method='post'>
                       <input type="submit" id='submitButton' form='textform'>
                     </form>
                     <br>
-
+                    
                     <h2><center>...or give it a try by selecting from one of the websites below:</center></h2>
                     <div>
                         <p><center><b class="sample_website">http://www.lamartalkscode.com</b></center></p>

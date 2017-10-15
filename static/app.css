@@ -8,8 +8,16 @@
     font-size: 1.25em;
 }
 
+nav {
+    background-color: #ffd5d6;
+}
+
 .lead a {
-    color: #ffd5d6;
+    color: #ff6289;
+}
+
+.lead a:hover {
+    color: #ff084a;
 }
 
 .maintext h2 {
@@ -21,7 +29,7 @@
 }
 
 center b {
-    color:#5c7fb7;
+    color:#66033c;
 }
 
 p, h3, .page-header{
@@ -30,6 +38,10 @@ p, h3, .page-header{
 	
 .bodystyle {
     background: #033b4c;
+}
+
+.sample_website:hover {
+    color:#ff084a;
 }
 
 #siteInput {

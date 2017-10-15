@@ -1,6 +1,6 @@
 # Main function to call and collect all useful information in dictionary
 
-import sliceURL
+import urlSlicer
 import scrapeGivenURL
 import scrapeWhoIs
 import scrapeAlexa
@@ -10,7 +10,7 @@ def runSearch(pListOfURLs):
     requiredInfo=[]
     
     for url in pListOfURLs:
-        slicedURL = sliceURL.sliceURL(url)
+        slicedURL = urlSlicer.sliceURL(url)
         siteTitle, siteDescription, socials, icon = scrapeGivenURL.scrapeGivenURL(url)
         adminName, adminAddress, adminCity, adminStateOrProvince, adminCountry, adminPhone, adminEmail = scrapeWhoIs.scrapeWhoIs(url)
         score, keywords = scrapeAlexa.scrapeAlexa(slicedURL)

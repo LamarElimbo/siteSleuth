@@ -2,7 +2,7 @@
 # Required info collected: (1a) Title & (1b) Description & (7) Social media pages and handles 
 
 import soupTheLink
-import sliceURL
+import urlSlicer
 
 def scrapeGivenURL(pURL):
     souped = soupTheLink.soupTheLink(pURL)
@@ -15,7 +15,7 @@ def scrapeGivenURL(pURL):
         siteTitle = siteTitle.replace('\n', '')
         
         if len(siteTitle) == 0:
-            siteTitle = sliceURL.sliceURL(pURL).replace('.com', '').replace('/', '')
+            siteTitle = urlSlicer.sliceURL(pURL).replace('.com', '').replace('/', '')
         else:
             splitSiteTitle = siteTitle.split('–')
             if len(splitSiteTitle) == 1:
@@ -30,7 +30,7 @@ def scrapeGivenURL(pURL):
             siteTitle = splitSiteTitle[0]
         print('title: ', siteTitle)
     except AttributeError:
-        siteTitle = sliceURL.sliceURL(pURL).replace('.com', '').replace('/', '')
+        siteTitle = urlSlicer.sliceURL(pURL).replace('.com', '').replace('/', '')
         
     # Collect site description
     siteDescription=''
@@ -59,7 +59,7 @@ def scrapeGivenURL(pURL):
         for social in commonSocialMedia:
             try:
                 if social in link:
-                    link = sliceURL.sliceURL(link)
+                    link = urlSlicer.sliceURL(link)
                     link = link.lstrip('/')
                     link = 'http://' + link
                     socials.append((link, social))

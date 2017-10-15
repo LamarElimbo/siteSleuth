@@ -2,10 +2,10 @@
 # Required info collected: (2) Street Address with Country & (3) Phone Number & (4) Admin Contact  
 
 import soupTheLink
-import sliceURL
+import urlSlicer
 
 def scrapeWhoIs(pURL):
-    slicedURL = sliceURL.sliceURL(pURL) 
+    slicedURL = urlSlicer.sliceURL(pURL) 
     
     whoIsURL = "https://who.is/whois/" + slicedURL
     

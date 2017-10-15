@@ -55,6 +55,13 @@ p, h3, .page-header{
     border-top: 3px dotted gray;
 }
 
+#download {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 80px;
+}
+
 .profile_container {
     width:100%;
     position: relative;
@@ -64,6 +71,7 @@ p, h3, .page-header{
     position: relative;
     top: 20px;
     width:120px;
+    border: 3px solid black;
 }
 
 #title {
@@ -85,6 +93,7 @@ p, h3, .page-header{
 
 .socials {
     width: 30px;
+    margin: 3px;
 }
 
 #keywords {

@@ -23,6 +23,6 @@ def runSearch(pListOfURLs):
         else:
             timezoneId, timezoneName = getTimezone.getTimezone(adminCity, adminStateOrProvince)
 
-        requiredInfo.append((url, {'Title': siteTitle, 'Description': siteDescription, 'Socials': socials, 'Icon': icon, "Admin's Name": adminName, 'Address': adminAddress, 'City': adminCity, 'State': adminStateOrProvince, 'Country': adminCountry, 'Phone': adminPhone, 'Email': adminEmail, 'Alexa Score': score, 'Keywords': keywords, 'Timezone ID': timezoneId, 'Timezone Name': timezoneName}))
+        requiredInfo.append({'Website': url, 'Title': siteTitle, 'Description': siteDescription, 'Socials': socials, 'Icon': icon, "Admin's Name": adminName, 'Address': adminAddress, 'City': adminCity, 'State': adminStateOrProvince, 'Country': adminCountry, 'Phone': adminPhone, 'Email': adminEmail, 'Alexa Score': score, 'Keywords': keywords, 'Timezone ID': timezoneId, 'Timezone Name': timezoneName})
         
     return requiredInfo

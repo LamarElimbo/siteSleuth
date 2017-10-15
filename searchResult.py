@@ -8,7 +8,7 @@ def getResult():
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Lamar's Website Lookup</title>
+        <title>Site Sleuth</title>
         <link rel="stylesheet" href="../static/app.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link href='//fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
@@ -37,14 +37,14 @@ def getResult():
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-                    <a class="navbar-brand" href="search.html">Lamar's Website Lookup</a>
+                    <a class="navbar-brand" href="search.html">Site Sleuth</a>
                 </div>
 
             </div>
             <!-- /.container-fluid -->
         </nav>
         <div class="container">
-            <h1 class="page-header">Welcome to the Data Detective Database</h1>
+            <h1 class="page-header">Welcome to Site Sleuth</h1>
             <p class="lead">This proprietary software, developed by world renowned data detective <a href='http://www.lamartalkscode.com'>Lamar Johnson</a>, is the central hub for all of your need-to-know website sleuthing needs!</p>
 
             <div class="row">
@@ -71,7 +71,8 @@ def getResult():
                     </div>
                 </div>
 
-                <div class="col-xs-11 col-md-5 maintext" style='position:absolute; right:7%;'>                
+                <div class="col-xs-11 col-md-5 maintext" style='position:absolute; right:7%;'>
+                <a href='/downloadCSV'><img id='download' src='/static/logos/download.png'></a>
                     $profileSegment
                 </div>
             </div>

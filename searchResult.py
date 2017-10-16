@@ -26,25 +26,13 @@ def getResult():
 
     <body class="bodystyle">
 
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                        aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-                    <a class="navbar-brand" href="search.html">Site Sleuth</a>
-                </div>
-
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
+        <div id="header">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="search.html">Site Sleuth</a>
+        </div>
+    </div>
         <div class="container">
-            <h1 class="page-header">Found some info!</h1>
+            <h1 class="page-header">It took some tough interrogations but I found some info for you!</h1>
 
             <div class="row">
                 <div class="col-xs-11 col-md-5 maintext">
@@ -55,7 +43,7 @@ def getResult():
                     </form>
                     <br>
                     
-                    <h2><center>...or give it a try by selecting from one of the websites below:</center></h2>
+                    <h2><center>...or give me a try by selecting from one of the websites below:</center></h2>
                     <div>
                         <p><center><b class="sample_website">http://www.lamartalkscode.com</b></center></p>
                         <p><center><b class="sample_website">http://www.hubba.com/</b></center></p>

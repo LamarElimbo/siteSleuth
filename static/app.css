@@ -1,6 +1,6 @@
 .maintext {
     border:  .1em solid white;
-    border-radius: .5em;
+    border-radius: .2em;
     margin: 0 1em 1em 0; 
     box-sizing: border-box;
     padding: 1em;
@@ -8,12 +8,21 @@
     font-size: 1.25em;
 }
 
-nav {
+#header {
+    width: 100%;
+    height: 55px;
     background-color: #ffd5d6;
+    border-bottom: 1px solid white;
+}
+
+#header a {
+    color: #66033c;
+    font-size: 22px;
+    letter-spacing: 2px;
 }
 
 .lead a {
-    color: #ff6289;
+    color: #66033c;
 }
 
 .lead a:hover {
@@ -37,7 +46,7 @@ p, h3, .page-header{
 }
 	
 .bodystyle {
-    background: #033b4c;
+    background: #009899;
 }
 
 .sample_website:hover {
@@ -70,7 +79,7 @@ p, h3, .page-header{
 #download {
     position: absolute;
     right: -20px;
-    top: -20px;
+    top: -10px;
     width: 80px;
 }
 

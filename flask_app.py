@@ -1,6 +1,3 @@
-#loading animation
-#banner
-
 from flask import Flask, request, render_template, make_response
 from string import Template
 from io import StringIO

@@ -32,7 +32,7 @@ def result():
     except urllib.error.URLError:
         return render_template('search.html')
     except UnicodeDecodeError:
-        return render_template('googleError.html')
+        return render_template('error.html')
 
 @app.route("/downloadCSV")
 def downloadCSV():

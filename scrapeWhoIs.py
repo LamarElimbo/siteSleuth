@@ -31,7 +31,7 @@ def scrapeWhoIs(pURL):
     adminPhone = ""
     adminEmail = ""
     
-    def textGetter(loopNum, categoryInfo):
+    def newLoopTextGetter(loopNum, categoryInfo):
         loopNum += 1
         
         categoryHeader = categoryInfo.parent.next_sibling
@@ -43,7 +43,7 @@ def scrapeWhoIs(pURL):
     for header in soupedWhoIsURL.find_all('strong'):
         
         if header.get_text() == "Name":
-            nameNum, name = textGetter(nameNum, header)
+            nameNum, name = newLoopTextGetter(nameNum, header)
             
             nameParts = name.split()
             fullName = ''
@@ -55,43 +55,43 @@ def scrapeWhoIs(pURL):
                 adminName = fullName
                 
         elif header.get_text() == "Organization":
-            organizationNum, organization = textGetter(organizationNum, header)
+            organizationNum, organization = newLoopTextGetter(organizationNum, header)
             
             if organizationNum == 2:
                 adminOrganization = organization
             
         elif header.get_text() == "Address":
-            addressNum, address = textGetter(addressNum, header)
+            addressNum, address = newLoopTextGetter(addressNum, header)
             
             if addressNum == 2:
                 adminAddress = address
             
         elif header.get_text() == "City":
-            cityNum, textGetter(cityNum, header)
+            cityNum, newLoopTextGetter(cityNum, header)
             
             if cityNum == 2:
                 adminCity = city
             
         elif header.get_text() == "State / Province":
-            stateOrProvinceNum, stateOrProvince = textGetter(stateOrProvinceNum, header)
+            stateOrProvinceNum, stateOrProvince = newLoopTextGetter(stateOrProvinceNum, header)
             
             if stateOrProvinceNum == 2:
                 adminStateOrProvince = stateOrProvince
             
         elif header.get_text() == "Postal Code":
-            postalCodeNum, postalCode = textGetter(postalCodeNum, header)
+            postalCodeNum, postalCode = newLoopTextGetter(postalCodeNum, header)
             
             if postalCodeNum == 2:
                 adminPostalCode = postalCode
             
         elif header.get_text() == "Country":
-            countryNum, country = textGetter(countryNum, header)
+            countryNum, country = newLoopTextGetter(countryNum, header)
             
             if countryNum == 2:
                 adminCountry = country
                 
         elif header.get_text() == "Phone":
-            phoneNum, phone = textGetter(phoneNum, header)
+            phoneNum, phone = newLoopTextGetter(phoneNum, header)
             
             if phoneNum == 2:
                 adminPhone = phone

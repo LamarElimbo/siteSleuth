@@ -20,16 +20,6 @@ def scrapeWhoIs(pURL):
     countryNum = 0
     phoneNum = 0
     emailNum = 0
-
-    registrantName = ""
-    registrantOrganization = ""
-    registrantAddress = ""
-    registrantCity = ""
-    registrantStateOrProvince = ""
-    registrantPostalCode = ""
-    registrantCountry = ""
-    registrantPhone = ""
-    registrantEmail = ""
     
     adminName = ""
     adminOrganization = ""
@@ -41,22 +31,19 @@ def scrapeWhoIs(pURL):
     adminPhone = ""
     adminEmail = ""
     
-    technicalName = ""
-    technicalOrganization = ""
-    technicalAddress = ""
-    technicalCity = ""
-    technicalStateOrProvince = ""
-    technicalPostalCode = ""
-    technicalCountry = ""
-    technicalPhone = ""
-    technicalEmail = ""
+    def textGetter(loopNum, categoryInfo):
+        loopNum += 1
+        
+        categoryHeader = categoryInfo.parent.next_sibling
+        categoryText = categoryHeader.get_text()
+        
+        return loopNum, categoryText
+        
     
     for header in soupedWhoIsURL.find_all('strong'):
         
         if header.get_text() == "Name":
-            nameNum += 1
-            name = header.parent.next_sibling
-            name = name.get_text()
+            nameNum, name = textGetter(nameNum, header)
             
             nameParts = name.split()
             fullName = ''
@@ -64,101 +51,59 @@ def scrapeWhoIs(pURL):
             for namePart in nameParts:
                 fullName += namePart[0] + namePart[1:].lower() + " "
             
-            if nameNum == 1:
-                registrantName = fullName
-            elif nameNum == 2:
+            if nameNum == 2:
                 adminName = fullName
-            elif nameNum == 3:
-                technicalName = fullName
+                
         elif header.get_text() == "Organization":
-            organizationNum += 1
-            organization = header.parent.next_sibling
-            organization = organization.get_text()
+            organizationNum, organization = textGetter(organizationNum, header)
             
-            if organizationNum == 1:
-                registrantOrganization = organization
-            elif organizationNum == 2:
+            if organizationNum == 2:
                 adminOrganization = organization
-            elif organizationNum == 3:
-                technicalOrganization = organization
+            
         elif header.get_text() == "Address":
-            addressNum += 1
-            address = header.parent.next_sibling
-            address = address.get_text()
+            addressNum, address = textGetter(addressNum, header)
             
-            if addressNum == 1:
-                registrantAddress = address
-            elif addressNum == 2:
+            if addressNum == 2:
                 adminAddress = address
-            elif addressNum == 3:
-                technicalAddress = address
+            
         elif header.get_text() == "City":
-            cityNum += 1
-            city = header.parent.next_sibling
-            city = city.get_text()
+            cityNum, textGetter(cityNum, header)
             
-            if cityNum == 1:
-                registrantCity = city
-            elif cityNum == 2:
+            if cityNum == 2:
                 adminCity = city
-            elif cityNum == 3:
-                technicalCity = city
+            
         elif header.get_text() == "State / Province":
-            stateOrProvinceNum += 1
-            stateOrProvince = header.parent.next_sibling
-            stateOrProvince = stateOrProvince.get_text()
+            stateOrProvinceNum, stateOrProvince = textGetter(stateOrProvinceNum, header)
             
-            if stateOrProvinceNum == 1:
-                registrantStateOrProvince = stateOrProvince
-            elif stateOrProvinceNum == 2:
+            if stateOrProvinceNum == 2:
                 adminStateOrProvince = stateOrProvince
-            elif stateOrProvinceNum == 3:
-                technicalStateOrProvince = stateOrProvince
+            
         elif header.get_text() == "Postal Code":
-            postalCodeNum += 1
-            postalCode = header.parent.next_sibling
-            postalCode = postalCode.get_text()
+            postalCodeNum, postalCode = textGetter(postalCodeNum, header)
             
-            if postalCodeNum == 1:
-                registrantPostalCode = postalCode
-            elif postalCodeNum == 2:
+            if postalCodeNum == 2:
                 adminPostalCode = postalCode
-            elif postalCodeNum == 3:
-                technicalPostalCode = postalCode
+            
         elif header.get_text() == "Country":
-            countryNum += 1
-            country = header.parent.next_sibling
-            country = country.get_text()
+            countryNum, country = textGetter(countryNum, header)
             
-            if countryNum == 1:
-                registrantCountry = country
-            elif countryNum == 2:
+            if countryNum == 2:
                 adminCountry = country
-            elif countryNum == 3:
-                technicalCountry = country
+                
         elif header.get_text() == "Phone":
-            phoneNum += 1
-            phone = header.parent.next_sibling
-            phone = phone.get_text()
+            phoneNum, phone = textGetter(phoneNum, header)
             
-            if phoneNum == 1:
-                registrantPhone = phone
-            elif phoneNum == 2:
+            if phoneNum == 2:
                 adminPhone = phone
-            elif phoneNum == 3:
-                technicalPhone = phone
+            
         elif header.get_text() == "Email":
             emailNum += 1
             email = header.parent.next_sibling
             email = "https://who.is/" + email.img['src']
             
-            if emailNum == 1:
-                registrantEmail = email
-            elif emailNum == 2:
+            if emailNum == 2:
                 adminEmail = email
-            elif emailNum == 3:
-                technicalEmail = email
-                
+            
     print("adminName", adminName)
     print("adminAddress", adminAddress)
     print("adminCity", adminCity)

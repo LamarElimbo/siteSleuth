@@ -8,6 +8,7 @@ import htmlSegCreator
 import searchResult
 import urlNormalizer
 
+
 app = Flask(__name__)
 requiredInfo=[]
 

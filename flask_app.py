@@ -1,44 +1,48 @@
 from flask import Flask, request, render_template, make_response
-from string import Template
 from io import StringIO
 import urllib
 import csv
-import mergeInfo
-import htmlSegCreator
-import searchResult
-import urlNormalizer
 
+import sys
+sys.path.insert(0, './site_sleuth/')
+import getResults
 
 app = Flask(__name__)
 requiredInfo=[]
 
 @app.route('/')
-@app.route('/search.html')
-def search():
-    return render_template('search.html')
+@app.route('/site_sleuth_search')
+def site_sleuth_search():
+    return render_template('search.html', 
+                           css_source='static/app.css', 
+                           activeTab='site_sleuth')
 
-@app.route('/result.html', methods=['POST'])
-def result():
+@app.route('/site_sleuth_result', methods=['POST'])
+def site_sleuth_result():
     try:
         websites = request.form['website']
-        websiteList = urlNormalizer.normalizeURL(websites)
-        global requiredInfo
-        requiredInfo=[]
-        requiredInfo += mergeInfo.runSearch(websiteList)
-        profileSeg = htmlSegCreator.createHTML(requiredInfo)
-        resultTemplate = searchResult.getResult()
-        return resultTemplate.substitute(profileSegment=profileSeg)
+        reqInfo = getResults.run(websites)
+        requiredInfo.append(reqInfo)
+        return render_template('result.html', 
+                           css_source='static/app.css', 
+                           activeTab='site_sleuth', 
+                           requiredInfo=reqInfo)        
     except urllib.error.HTTPError:
-        return render_template('error.html')
+        return render_template('error.html', 
+                           css_source='static/app.css', 
+                           activeTab='site_sleuth')
     except urllib.error.URLError:
-        return render_template('search.html')
+        return render_template('search.html', 
+                           css_source='static/app.css', 
+                           activeTab='site_sleuth')
     except UnicodeDecodeError:
-        return render_template('error.html')
+        return render_template('error.html', 
+                           css_source='static/app.css', 
+                           activeTab='site_sleuth')
 
-@app.route("/downloadCSV")
-def downloadCSV():
+@app.route("/site_sleuth_downloadCSV")
+def site_sleuth_downloadCSV():
         
-    print('required info: ', requiredInfo)
     si = StringIO()
     w = csv.DictWriter(si, requiredInfo[0].keys())
     w.writeheader()

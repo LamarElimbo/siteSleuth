@@ -10,7 +10,7 @@
 
 #header {
     width: 100%;
-    height: 55px;
+    height: 53px;
     background-color: #ffd5d6;
     border-bottom: 1px solid white;
 }
@@ -19,6 +19,10 @@
     color: #66033c;
     font-size: 22px;
     letter-spacing: 2px;
+}
+
+#header a:hover {
+    background-color:#ff084a;
 }
 
 .lead a {
@@ -60,12 +64,14 @@ p, h3, .page-header{
 #submitButton {
     position: relative;
     width: 100%;
-    height: 65px;
-    background: #b7c8e6;
-    color: #033b4c;
+    height: 50px;
+    background: #ff084a;
+    color: white;
     top:8px;
     text-align: center;
     font-size: 15;
+    border:  .1em solid white;
+    border-radius: 1em;
 }
 
 #divider {

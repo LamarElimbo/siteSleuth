@@ -1,0 +1,95 @@
+{% extends "_skeleton_template.html" %}
+{% block title %}Lamar's Web Apps - Site Sleuth{% endblock %}
+{% block content %}
+    <h1 class="page-header">It took some tough interrogations but I found some info for you!</h1>
+
+    <div class="row">
+        <div class="col-xs-11 col-md-5 maintext">
+            <h2>Try another website or list of websites separated by a comma here...</h2>
+            <textarea type='textarea' id='siteInput' form='textform' name='website'></textarea>
+            <form action="/site_sleuth_result" id='textform' method='post'>
+              <input type="submit" id='submitButton' form='textform'>
+            </form>
+            <br>
+
+            <h2><center>...or give me a try by selecting from one of the websites below:</center></h2>
+            <div>
+                <p><center><b class="sample_website">http://www.lamartalkscode.com</b></center></p>
+                <p><center><b class="sample_website">http://www.hubba.com/</b></center></p>
+                <p><center><b class="sample_website">http://www.everynoise.com</b></center></p>
+                <p><center><b class="sample_website">http://www.last.fm/</b></center></p>
+                <p><center><b class="sample_website">http://www.goodreads.com/</b></center></p>
+                <p><center><b class="sample_website">http://www.quora.com/</b></center></p>
+                <p><center><b class="sample_website">http://www.dictionary.com/</b></center></p>
+                <p><center><b class="sample_website">http://www.ted.com/</b></center></p>
+                <p><center><b class="sample_website">http://www.trendhunter.com/</b></center></p>
+                <p><center><b class="sample_website">http://www.flipboard.com/</b></center></p>
+            </div>
+        </div>
+
+        <div class="col-xs-11 col-md-5 maintext" style='position:absolute; right:7%;'>
+        <a href='/site_sleuth_downloadCSV'><img id='download' src='/static/logos/download.png'></a>
+        {% for website in requiredInfo %}
+            <div class="profile_container">
+
+                <div class="infoBox" id='title'>
+                    <h1>{{website['Title']}}</h1>
+                    <p><a href={{site}}>{{website['Website']}}</a></p>
+                    <p>Alexa Score | {{website['Alexa Score']}}</p>
+                    <p>
+                        {% if socials != [('No socials found.', 'None')] %}
+                            {% for social in website['Socials'] %}
+                                <a href="{{social[0]}}"><img class='socials' src='/static/logos/{{social[1]}}.png'></a>
+                            {% endfor %}
+                        {% else %}
+                            <br>
+                        {% endif %}
+                    </p>
+                </div>
+                <div id='logo'><img src="{{website['Icon']}}"></div>
+                <div class="infoBox" id="description">
+                    <h3>Site Description</h3>
+                    <p>{{website['Description']}}</p>
+                </div>
+                <div class="infoBox" id='keywords'>
+                    <h3>Keywords</h3>
+                    <p><i>
+                        {% for keyword in website['Keywords'] %}
+                            {% if keyword == 'No keywords found.'%}
+                                {{keyword}}
+                            {% else %}
+                                #{{keyword}}
+                            {% endif %}
+                        {% endfor %}
+                    </i></p>
+                </div>
+            </div>
+
+            <div class="profile_container">
+                <div class="infoBox" id="name">
+                    <h3>Admin</h3>
+                    <p>{{website["Admin's Name"]}}</p>
+                </div>
+                <div id="adminPic"></div>
+                <div id="address">
+                    <div class="infoBox">
+                        <h3>Address</h3>
+                        <p>{{website['Address']}}</p>
+                    </div>
+                    <div class="infoBox">
+                        <p>{{website['City']}} | {{website['State']}} | {{website['Country']}}</p>
+                    </div>
+                </div>
+                <div class="infoBox" id="timezone">
+                    <h3>Timezone</h3>
+                    <p>{{website['Timezone ID']}} | {{website['Timezone Name']}}</p>
+                </div>
+                <div class="infoBox" id="contact">
+                    <h3>Contact</h3>
+                    <p>{{website['Phone']}} | <img height=18px src={{email}}></p>
+                </div>
+            </div><br>
+            <div id='divider'></div><br><br>
+        {% endfor %}
+    <script src="../static/site_sleuth_static/sample_website.js"></script>
+{% endblock %}

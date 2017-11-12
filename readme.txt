@@ -1,6 +1,7 @@
 Play with the web app! -> http://lamjo.pythonanywhere.com/
+Visit the blog post: http://www.lamartalkscode.com/site-sleuth/
 
-Where to find the information asked for:
+Location in files of scraped information:
 
 1. Meta-tags: 
 	1. Title --> scrapeMain.py
